@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Event</title>
+</head>
+<body>
+
+    <form action="{{ url_for('submit_event', event_date=request.args.get('date')) }}" method="POST">
+
+        <label for="title">Event Name:</label>
+        <input type="text" name="title" required>
+  
+        <label for="time">Time:</label>
+        <input type="time" name="time" value="12:00" required>
+  
+        <label for="description">Description:</label>
+        <textarea name="description" required></textarea>
+  
+        <input type="submit" value="Submit Event">
+    </form>
+    
+</body>
+</html>
