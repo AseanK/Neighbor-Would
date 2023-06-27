@@ -3,19 +3,180 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">  
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 
-  <title>Neighbor Would</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>NeighborWould</title>
 </head>
 <body>
-  <div class="justify-content-center">
-    <section id="home" class="main-banner">
-      <div class="heading">
-        <h1>Neighbor Would</h1>
-        <p>connection to your neighbors</p>
+<header>
+ 
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark d-none d-lg-block" style="z-index: 2000;">
+    <div class="container-fluid">
+      <!-- Navbar brand -->
+      <a class="navbar-brand nav-link" href="#intro">
+        <strong>NW</strong>
+      </a>
+      <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample01"
+        aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarExample01">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" href="#about">About us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#events">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#events">Register</a>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav d-flex flex-row">
+          <!-- Icons -->
+          <li class="nav-item me-3 me-lg-0">
+            <a class="nav-link" href="#" rel="nofollow">
+              <i class="fa fa-youtube"></i>
+            </a>
+          </li>
+          <li class="nav-item me-3 me-lg-0">
+            <a class="nav-link" href="#" rel="nofollow">
+              <i class="fa fa-facebook-f"></i>
+            </a>
+          </li>
+          <li class="nav-item me-3 me-lg-0">
+            <a class="nav-link" href="#" rel="nofollow">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li class="nav-item me-3 me-lg-0">
+            <a class="nav-link" href="#" rel="nofollow">
+              <i class="fa fa-github"></i>
+            </a>
+          </li>
+        </ul>
       </div>
+    </div>
+  </nav>
+  <!-- Navbar -->
+
+  <!-- Background image -->
+  <div id="intro" class="bg-image shadow-2-strong">
+    <div class="mask" style="background-color: #1a1a1a;">
+      <div class="container d-flex align-items-center justify-content-center text-center h-100">
+        <div class="text-white">
+          <h1 class="mb-3">NeighborWould</h1>
+          <h5 class="mb-4">Connection to your neighbors</h5>
+          <a class="btn btn-outline-light btn-lg m-2" href="https://www.youtube.com/watch?v=c9B4TPnak1A" role="button"
+            rel="nofollow" target="_blank">Start tutorial</a>
+          <a class="btn btn-outline-light btn-lg m-2" href="#events" role="button">Upcoming Events</a>
+        </div>
+      </div>
+    </div>
   </div>
+  <!-- Background image -->
+</header>
+<!--Main Navigation-->
+
+<!--Main layout-->
+<main class="mt-5">
+  <div class="container">
+    <!--Section: Content-->
+    <section>
+      <div class="row">
+        <div class="col-md-6 gx-5 mb-4">
+          <h4><strong>Connect with Your Neighbors and Stay Updated</strong></h4>
+          <p>
+            Welcome to NeighborWould, the community platform where you can easily connect with your neighbors and stay informed about local events. 
+            Whether you're organizing a garage sale, throwing a party, or hosting a community gathering, 
+            NeighborWould provides a convenient way to share and discover events in your neighborhood.
+            With NeighborWould, you can explore a wide range of events happening in your area.
+            Stay informed about upcoming events and plan your schedule accordingly. 
+            Never miss out on the exciting happenings in your community again!
+          </p>
+          <p><strong>Ready to explore?</strong></p>
+          <a href="{{ url_for('calendar') }}">Click here</a>
+        </div>
+
+        <div class="col-md-6 gx-5 mb-4" id="about">
+          <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
+            <img src="/static/image/garage.jpg" class="img-fluid" style="border-radius: 30%;"/>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--Section: Content-->
+
+    <hr class="my-5" />
+
+    <!--Section: Content-->
+    <section class="text-center" id="events">
+      <h4 class="mb-5"><strong>Upcoming Events</strong></h4>
+      <div id="carouselDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="..." class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>First slide label</h5>
+              <p>Some representative placeholder content for the first slide.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="..." class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Second slide label</h5>
+              <p>Some representative placeholder content for the second slide.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="..." class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Third slide label</h5>
+              <p>Some representative placeholder content for the third slide.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </section>
+  </div>
+</main>
+<!--Main layout-->
+
+<!--Footer-->
+<footer class="bg-light text-lg-start">
+  <hr class="m-0" />
+
+  <div class="text-center py-4 align-items-center">
+    <p>Follow us on social media</p>
+    <a href="#" class="btn btn-primary m-1" role="button"
+      rel="nofollow" target="_blank">
+      <i class="fa fa-youtube"></i>
+    </a>
+    <a href="#" class="btn btn-primary m-1" role="button" rel="nofollow"
+      target="_blank">
+      <i class="fa fa-facebook-f"></i>
+    </a>
+    <a href="#" class="btn btn-primary m-1" role="button" rel="nofollow"
+      target="_blank">
+      <i class="fa fa-twitter"></i>
+    </a>
+    <a href="#" class="btn btn-primary m-1" role="button" rel="nofollow"
+      target="_blank">
+      <i class="fa fa-github"></i>
+    </a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
 </html>

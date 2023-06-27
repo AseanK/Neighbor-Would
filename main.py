@@ -59,4 +59,4 @@ def event_details(event_id):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='192.168.4.23')
