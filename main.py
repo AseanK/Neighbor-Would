@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for, abort
 from flask_sqlalchemy import SQLAlchemy
 from flask_bootstrap import Bootstrap
+from datetime import date
+from sqlalchemy import desc
 
 app = Flask(__name__)
 app.app_context().push()
@@ -26,8 +28,9 @@ db.create_all()
 # Main home
 @app.route('/')
 def index():
-    events = Events.query.all()
-    return render_template('index.html', events=events)
+    today = date.today()
+    events = Events.query.order_by(desc(Events.date)).all()
+    return render_template('index.html', events=events, today=today)
 
 @app.route('/calendar')
 def calendar():
