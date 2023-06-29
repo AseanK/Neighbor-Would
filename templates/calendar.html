@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  {% include "header.html" %}
   <title>Events Calendar</title>
 
   <meta charset='utf-8' />
@@ -9,7 +10,9 @@
   
   <link href='https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.css' rel='stylesheet'>
   <link href='https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.1/css/all.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+  
   <script src='https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js'></script>
   <script src='https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js'></script>
   <script src='https://cdn.jsdelivr.net/npm/fullcalendar@3.10.2/dist/fullcalendar.min.js'></script>
@@ -19,18 +22,17 @@
       var calendar = $('#calendar').fullCalendar({
         themeSystem: 'bootstrap3',
         contentHeight: 900,
-        eventColor: '#aee2ff',
+        eventColor: '#A8AEA4',
         header: {
-          left: 'prev,next today',
+          left: 'month,listMonth',
           center: 'title',
-          right: 'month,agendaWeek,listMonth'
+          right: 'prev,next today'
         },
         buttonText: {
           today: 'Today',
           month: 'Month',
-          week: 'Week',
           day: 'Day',
-          list: 'List'
+          list: 'Events List'
         },
 
         events: [
@@ -58,11 +60,11 @@
   
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body style="background-color: #f9f9f9;">
   <header>
-    <h1 class="text-center">Events Calendar</h1>
+    <h1 class="text-center mt-4 mb-4">Events Calendar</h1>
     <hr class="m-3" />
-  </header>
   
   <div class="cal-container">
     <div id='calendar'></div>

@@ -1,25 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Event</title>
-</head>
+{% include "header.html" %}
+  <!-- Background image -->
 <body>
-
-    <form action="{{ url_for('submit_event', event_date=request.args.get('date')) }}" method="POST">
-
-        <label for="title">Event Name:</label>
-        <input type="text" name="title" required>
-  
-        <label for="time">Time:</label>
-        <input type="time" name="time" value="12:00" required>
-  
-        <label for="description">Description:</label>
-        <textarea name="description" required></textarea>
-  
-        <input type="submit" value="Submit Event">
-    </form>
-    
+  <div id="intro" class="bg-image shadow-2-strong">
+    <div class="container d-flex align-items-center justify-content-center text-center h-100">
+      <div class="form-container">
+        <h1>Event Post</h1>
+          <form action="{{ url_for('submit_event', event_date=request.args.get('date')) }}" method="POST" class="event-form">
+            <div class="form-group m-4">
+              <label for="title">Event Name</label>
+              <input type="text" class="form-control" name="title" required>
+            </div>
+        
+            <div class="form-group m-4">
+              <label for="time">Time</label>
+              <input type="time" class="form-control" name="time" placeholder="12:00" required>
+            </div>
+        
+            <div class="form-group m-4">
+              <label for="description">Description</label>
+              <textarea class="form-control text-form" name="description" required placeholder="Enter event details and location/address"></textarea>
+            </div>
+            <div class="form-group m-4 text-end">
+              <button type="submit" class="btn btn-outline-light btn-lg">Submit Event</button>
+            </div>
+          </form>
+      </div>
+    </div>
+  </div>
+</header>
 </body>
 </html>
