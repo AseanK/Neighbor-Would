@@ -129,10 +129,6 @@
   width: 40vw;
 }
 
-.form-container h1, label {
-  color: #fff;
-}
-
 .form-group {
   text-align: left;
   margin-top: 10px;
@@ -145,4 +141,13 @@
  .text-form::placeholder {
   color: #999;
   opacity: 0.7;
+}
+
+/* DETAILS */
+.detail-content {
+  background-color: rgba(127,135,111,0.9);
+  width: 30vw;
+  height: 50vh;
+  border-radius: 20px;
+  
 }

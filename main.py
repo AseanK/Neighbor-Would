@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, abort
 from flask_sqlalchemy import SQLAlchemy
 from flask_bootstrap import Bootstrap
-from datetime import date
+from datetime import date, datetime
 from sqlalchemy import desc
 
 app = Flask(__name__)
@@ -58,7 +58,15 @@ def create():
 @app.route('/event-details/<event_id>')
 def event_details(event_id):
     event = Events.query.get(event_id)
-    return render_template('event_details.html', event=event)
+    # starting time format
+    s_time = datetime.strptime( event.time, '%H:%M')
+    # date format
+    date_list = event.date.split("-")
+    d = datetime(int(date_list[0]), int(date_list[1]), int(date_list[2]))
+    formatted_date = d.strftime("%b %d")
+    s_t_am_pm = s_time.strftime('%I:%M %p')
+
+    return render_template('event_details.html', event=event, s_time=s_t_am_pm, date=formatted_date)
 
 
 if __name__ == '__main__':
