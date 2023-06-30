@@ -145,9 +145,30 @@
 
 /* DETAILS */
 .detail-content {
-  background-color: rgba(127,135,111,0.9);
+  position: relative;
+  background-color: rgba(127, 135, 111, 0.9);
   width: 30vw;
   height: 50vh;
   border-radius: 20px;
-  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.detail-content .description {
+  align-self: flex-start;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.detail-content .details {
+  align-self: flex-end;
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
+.detail-content .detail-btn{
+  justify-content: center;
+}
+.detail-content .detail-btn a{
+  width: 27vw;
 }

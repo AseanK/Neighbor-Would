@@ -48,6 +48,7 @@
     <hr class="my-5" />
 
     <!--Section: Content-->
+    {% if events %}
     <section class="text-left" id="events">
       <h4 class="mb-5"><strong>Upcoming Events</strong></h4>
       <div id="carouselDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
@@ -63,7 +64,7 @@
             </div>
             <div class="carousel-caption d-none d-md-block">
               <h5>{{ events[0].title }}</h5>
-              <p>{{ events[0].date }}</p>
+              <p>{{ events[0].date }}<br>{{ events[0].s_time }}</p>
             </div>
           </div>
           <div class="carousel-item">
@@ -72,7 +73,7 @@
             </div>
             <div class="carousel-caption d-none d-md-block">
               <h5>{{ events[1].title }}</h5>
-              <p>{{ events[1].date }}</p>
+              <p>{{ events[1].date }}<br>{{ events[1].s_time }}</p>
             </div>
           </div>
           <div class="carousel-item">
@@ -81,7 +82,7 @@
             </div>
             <div class="carousel-caption d-none d-md-block">
               <h5>{{ events[2].title }}</h5>
-              <p>{{ events[2].date }}</p>
+              <p>{{ events[2].date }}<br>{{ events[2].s_time }}</p>
             </div>
           </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselDark" data-bs-slide="prev">
@@ -97,6 +98,7 @@
       </div>
       
     </section>
+    {% endif %}
 
     <!--Footer-->
     <footer class="bg-light text-lg-end">

@@ -9,11 +9,32 @@
               <label for="title">Event Name</label>
               <input type="text" class="form-control" name="title" required>
             </div>
+
+            <div class="form-group m-4">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="enable-date-input">
+                <label class="form-check-label" for="enable-date-input">Multi-day Event</label>
+              </div>
+            </div>
+    
+            <div class="form-group m-4" id="date-input-container" style="display: none;">
+              <label for="date">Date</label>
+              <input type="date" class="form-control" name="ending_date">
+            </div>
         
             <div class="form-group m-4">
-              <label for="time">Time</label>
-              <input type="time" class="form-control" name="time" required>
+              <div class="row">
+                <div class="col">
+                  <label for="time">Starting Time</label>
+                  <input type="time" class="form-control" name="s_time" required>
+                </div>
+                <div class="col">
+                  <label for="time">Ending Time</label>
+                  <input type="time" class="form-control" name="e_time" required>
+                </div>
+              </div>
             </div>
+            
         
             <div class="form-group m-4">
               <label for="description">Description</label>
@@ -28,5 +49,16 @@
     </div>
   </div>
 </header>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var enableDateInput = document.getElementById("enable-date-input");
+    var dateInputContainer = document.getElementById("date-input-container");
+
+    enableDateInput.addEventListener("change", function() {
+      dateInputContainer.style.display = enableDateInput.checked ? "block" : "none";
+    });
+  });
+</script>
+
 </body>
 </html>

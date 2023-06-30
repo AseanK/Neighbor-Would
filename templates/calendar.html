@@ -38,9 +38,9 @@
         events: [
           {% for event in events %}
             {
-              title: '{{ event.title }}',
-              start: '{{ event.date }}',
-              time: '{{ event.time }}',
+              title: '{{ event.title | escape }}',
+              start: '{{ event.date }}T{{ event.s_time }}',
+              end: '{{ event.e_date }}',
               id: '{{ event.id }}'
             },
           {% endfor %}

@@ -19,8 +19,10 @@ class Events(db.Model):
     __tablename__ = "events"
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(250), nullable=False)
-    time = db.Column(db.String)
+    s_time = db.Column(db.String, nullable=False)
+    e_time = db.Column(db.String, nullable=False)
     date = db.Column(db.String)
+    e_date = db.Column(db.String, nullable=True)
     description = db.Column(db.Text, nullable=False)
 
 db.create_all()
@@ -42,9 +44,11 @@ def calendar():
 def submit_event(event_date):
     new_event = Events(
         title = request.form['title'],
-        time =  request.form['time'],
+        s_time =  request.form['s_time'],
+        e_time =  request.form['e_time'],
         description = request.form['description'],
-        date = event_date
+        date = event_date,
+        e_date = request.form['ending_date']
         )
     db.session.add(new_event)
     db.session.commit()
@@ -58,15 +62,17 @@ def create():
 @app.route('/event-details/<event_id>')
 def event_details(event_id):
     event = Events.query.get(event_id)
-    # starting time format
-    s_time = datetime.strptime( event.time, '%H:%M')
+    # time format
+    s_time = datetime.strptime( event.s_time, '%H:%M')
+    e_time = datetime.strptime( event.e_time, '%H:%M')
+    s_t_am_pm = s_time.strftime('%I:%M %p')
+    e_t_am_pm = e_time.strftime('%I:%M %p')
     # date format
     date_list = event.date.split("-")
     d = datetime(int(date_list[0]), int(date_list[1]), int(date_list[2]))
     formatted_date = d.strftime("%b %d")
-    s_t_am_pm = s_time.strftime('%I:%M %p')
 
-    return render_template('event_details.html', event=event, s_time=s_t_am_pm, date=formatted_date)
+    return render_template('event_details.html', event=event, s_time=s_t_am_pm, e_time=e_t_am_pm, date=formatted_date)
 
 
 if __name__ == '__main__':
