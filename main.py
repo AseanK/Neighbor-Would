@@ -72,8 +72,15 @@ def event_details(event_id):
     d = datetime(int(date_list[0]), int(date_list[1]), int(date_list[2]))
     formatted_date = d.strftime("%b %d")
 
-    return render_template('event_details.html', event=event, s_time=s_t_am_pm, e_time=e_t_am_pm, date=formatted_date)
+    if event.e_date:
+        e_date_list = event.e_date.split("-")
+        e_d = datetime(int(e_date_list[0]), int(e_date_list[1]), int(e_date_list[2]))
+        formatted_e_date = e_d.strftime("%b %d")
+    else:
+        formatted_e_date = None
+
+    return render_template('event_details.html', event=event, s_time=s_t_am_pm, e_time=e_t_am_pm, date=formatted_date, e_date =formatted_e_date)
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='192.168.4.23')
+    app.run(debug=True)

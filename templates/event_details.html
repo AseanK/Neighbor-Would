@@ -10,7 +10,11 @@
           <p>{{ event.description }}</p>
         </div>
         <div class="details">
-          <p class="text-end">{{ date }} </br> {{ s_time }} </br> {{ e_time }}</p>
+          {% if event.e_date %}
+          <p class="text-end">{{ date }} to {{ e_date }} </br> {{ s_time }} - {{ e_time }}</p>
+          {% else %}
+          <p class="text-end">{{ date }} </br> {{ s_time }} - {{ e_time }}</p>
+          {% endif %}
           <div class="detail-btn text-end">
             <a class="btn btn-outline-light btn-lg" href="{{ url_for('calendar') }}">Back</a>
           </div>
