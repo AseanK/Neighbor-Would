@@ -27,6 +27,21 @@ class Events(db.Model):
 
 db.create_all()
 
+
+# Date format e.g. Jan 21
+def date_format(date):
+    d_list = date.split('-')
+    d = datetime(int(d_list[0]), int(d_list[1]), int(d_list[2]))
+    # First three words of the month and the date
+    return d.strftime("%b %d")
+
+
+# Time format e.g. 4:00PM
+def time_format(time):
+    t = datetime.strptime(time, '%H:%M')
+    return t.strftime('%I:%M %p')
+
+
 # Main home
 @app.route('/')
 def index():
@@ -62,25 +77,21 @@ def create():
 @app.route('/event-details/<event_id>')
 def event_details(event_id):
     event = Events.query.get(event_id)
+    
     # time format
-    s_time = datetime.strptime( event.s_time, '%H:%M')
-    e_time = datetime.strptime( event.e_time, '%H:%M')
-    s_t_am_pm = s_time.strftime('%I:%M %p')
-    e_t_am_pm = e_time.strftime('%I:%M %p')
-    # date format
-    date_list = event.date.split("-")
-    d = datetime(int(date_list[0]), int(date_list[1]), int(date_list[2]))
-    formatted_date = d.strftime("%b %d")
+    s_t_am_pm = time_format(event.s_time)
+    e_t_am_pm = time_format(event.e_time)
+    
+    # staring date format
+    formatted_date = date_format(event.date)
 
+    # ending date format
     if event.e_date:
-        e_date_list = event.e_date.split("-")
-        e_d = datetime(int(e_date_list[0]), int(e_date_list[1]), int(e_date_list[2]))
-        formatted_e_date = e_d.strftime("%b %d")
+        formatted_e_date = date_format(event.e_date)
     else:
         formatted_e_date = None
 
     return render_template('event_details.html', event=event, s_time=s_t_am_pm, e_time=e_t_am_pm, date=formatted_date, e_date =formatted_e_date)
 
-
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='192.168.4.23')

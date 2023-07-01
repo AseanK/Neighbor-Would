@@ -1,7 +1,6 @@
-<!DOCTYPE html>
+{% include "header.html" %}
 <html>
 <head>
-  {% include "header.html" %}
   <title>Events Calendar</title>
 
   <meta charset='utf-8' />
@@ -34,13 +33,19 @@
           day: 'Day',
           list: 'Events List'
         },
+        views: {
+          month: {
+            titleFormat: 'MMM YYYY'
+            }
+        },
+        showNonCurrentDates: false,
 
         events: [
           {% for event in events %}
             {
               title: '{{ event.title | escape }}',
               start: '{{ event.date }}T{{ event.s_time }}',
-              end: '{{ event.e_date }}',
+              end: '{{ event.e_date }}T{{ event.e_time }}',
               id: '{{ event.id }}'
             },
           {% endfor %}
@@ -61,13 +66,14 @@
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
-<body style="background-color: #f9f9f9;">
-  <header>
-    <h1 class="text-center mt-4 mb-4">Events Calendar</h1>
-    <hr class="m-3" />
-  
-  <div class="cal-container">
-    <div id='calendar'></div>
+  <div class="row justify-content-center">
+    <h4 class="col-md-10 gx-5 mt-2">Events Calendar</h4>
+    <hr class="my-2" />
+    <div class="row justify-content-center">
+      <div class="cal-container col-md-10 gx-5 mb-5 mt-3">
+        <div id='calendar'></div>
+      </div>
+    </div>
   </div>
 </body>
 </html>

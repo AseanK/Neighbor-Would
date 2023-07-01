@@ -12,6 +12,28 @@
   }
 }
 
+*{
+  transition: 0.3s ease-in-out;
+}
+
+html{
+  overflow-x: hidden;
+}
+
+p, h5{
+  font-family: 'Noto Sans', sans-serif;
+}
+
+.btn, .nav-link{
+  font-family: 'Noto Sans', sans-serif;
+}
+
+h1, h4{
+  /* font-family: 'Noto Serif', serif; */
+  font-family: 'Fira Sans', sans-serif;
+  font-weight: 600;
+}
+
 /* Main */
 .navbar {
   background-color: rgba(127,135,111,0.8)
@@ -111,17 +133,32 @@
 
 /* CALENDAR */
 #calendar {
-  max-width: 1000px;
   margin: auto;
+}
+
+.btn-group, .glyphicon, .fc-month-button, .fc-listMonth-button, .fc-today-button {
+  color: #7F876F;
+}
+
+.btn-group:hover, .glyphicon:hover, .fc-month-button:hover, .fc-listMonth-button:hover, .fc-today-button:hover {
+  color: #A8AEA4;
 }
 
 .fc-day-grid-event:hover{
   cursor: pointer;
 }
 
+.fc-list-item:hover{
+  cursor: pointer;
+}
+
 .fc-today {
   background-color: #7F876F;
   clip-path: circle(35% at 100% 0);
+}
+
+.fc-sat, .fc-sun {
+  color:red;
 }
 
 /* FORM */
@@ -141,6 +178,15 @@
  .text-form::placeholder {
   color: #999;
   opacity: 0.7;
+}
+
+.form-check-input:hover, .form-check-label:hover{
+  cursor: pointer;
+}
+
+.show {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
 }
 
 /* DETAILS */

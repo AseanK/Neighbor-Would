@@ -11,17 +11,18 @@
             </div>
 
             <div class="form-group m-4">
-              <div class="form-check">
+              <div class="row">
+              <div class="col">
                 <input class="form-check-input" type="checkbox" id="enable-date-input">
                 <label class="form-check-label" for="enable-date-input">Multi-day Event</label>
               </div>
-            </div>
-    
-            <div class="form-group m-4" id="date-input-container" style="display: none;">
+            <div class="col" id="date-input-container" style="opacity: 0; transform: translateX(-30px); transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; display: none;">
               <label for="date">Date</label>
               <input type="date" class="form-control" name="ending_date">
             </div>
-        
+          </div>
+          </div>
+
             <div class="form-group m-4">
               <div class="row">
                 <div class="col">
@@ -34,8 +35,7 @@
                 </div>
               </div>
             </div>
-            
-        
+
             <div class="form-group m-4">
               <label for="description">Description</label>
               <textarea class="form-control text-form" name="description" required placeholder="Enter event details and location/address"></textarea>
@@ -55,7 +55,17 @@
     var dateInputContainer = document.getElementById("date-input-container");
 
     enableDateInput.addEventListener("change", function() {
-      dateInputContainer.style.display = enableDateInput.checked ? "block" : "none";
+      if (enableDateInput.checked) {
+        dateInputContainer.style.display = "block";
+        setTimeout(function() {
+          dateInputContainer.classList.add("show");
+        }, 10);
+      } else {
+        dateInputContainer.classList.remove("show");
+        setTimeout(function() {
+          dateInputContainer.style.display = "none";
+        }, 300);
+      }
     });
   });
 </script>
