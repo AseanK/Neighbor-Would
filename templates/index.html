@@ -31,9 +31,6 @@
             Stay informed about upcoming events and plan your schedule accordingly.<br> 
             Never miss out on the exciting happenings in your community again!
           </p>
-          <p><strong>Ready to explore?</strong></p>
-          <a class="btn btn-outline-dark btn-sm" href="{{ url_for('calendar') }}" role="button"
-            rel="nofollow">Event Calendar</a>
         </div>
 
         <div class="col-md-6 gx-5 mb-4 mt-4" id="about">
@@ -48,6 +45,28 @@
     <hr class="my-5" />
 
     <!-- Section: Example -->
+    <section class="text-left" id="example">
+      <div class="row">
+        <div class="col">
+          <h4><strong>How does it work?</strong></h4>
+          <ul>
+            <li>Light weight</li>
+            <li>noice</li>
+            <li>more noice </li>
+          </ul>
+          <div class="text-end">
+            <p><strong>Ready to explore?</strong></p>
+            <a class="btn btn-outline-dark btn-sm" href="{{ url_for('calendar') }}" role="button"
+              rel="nofollow">Event Calendar</a>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
+            <img src="/static/image/cal_ex.png" class="img-fluid" style="border-radius: 20px;"/>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!--Section: Content-->
     {% if events[2] %}
