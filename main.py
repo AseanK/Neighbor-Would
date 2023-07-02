@@ -24,6 +24,7 @@ class Events(db.Model):
     date = db.Column(db.String)
     e_date = db.Column(db.String, nullable=True)
     description = db.Column(db.Text, nullable=False)
+    color = db.Column(db.String, nullable=True)
 
 db.create_all()
 
@@ -47,7 +48,9 @@ def time_format(time):
 def index():
     today = date.today()
     events = Events.query.order_by(desc(Events.date)).all()
-    return render_template('index.html', events=events, today=today)
+    tf = time_format
+    df = date_format
+    return render_template('index.html', events=events, today=today, tf=tf, df=df)
 
 @app.route('/calendar')
 def calendar():
@@ -63,7 +66,8 @@ def submit_event(event_date):
         e_time =  request.form['e_time'],
         description = request.form['description'],
         date = event_date,
-        e_date = request.form['ending_date']
+        e_date = request.form['ending_date'],
+        color = request.form ['color']
         )
     db.session.add(new_event)
     db.session.commit()
@@ -74,7 +78,7 @@ def submit_event(event_date):
 def create():
     return render_template('create.html')
 
-@app.route('/event-details/<event_id>')
+@app.route('/event-details/<int:event_id>')
 def event_details(event_id):
     event = Events.query.get(event_id)
     

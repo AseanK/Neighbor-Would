@@ -17,7 +17,7 @@
 }
 
 html{
-  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 p, h5{
@@ -53,6 +53,7 @@ h1, h4{
   overflow: hidden;
   position: relative;
   height: 300px;
+  border-radius: 20px;
 }
 
 .crop-img img {
@@ -75,6 +76,11 @@ h1, h4{
 
 .carousel-caption p {
   padding-top: 20px;
+}
+
+.detail-link {
+  text-decoration: none;
+  color: #2e2e2e;
 }
 
 /* ICONS */
@@ -133,14 +139,20 @@ h1, h4{
 
 /* CALENDAR */
 #calendar {
-  margin: auto;
+  margin: 0 auto;
+  width: 100%
+}
+
+.cal-row{
+  width: 100%;
+  justify-content: center;
 }
 
 .btn-group, .glyphicon, .fc-month-button, .fc-listMonth-button, .fc-today-button {
   color: #7F876F;
 }
 
-.btn-group:hover, .glyphicon:hover, .fc-month-button:hover, .fc-listMonth-button:hover, .fc-today-button:hover {
+.glyphicon:hover, .fc-month-button:hover, .fc-listMonth-button:hover, .fc-today-button:hover {
   color: #A8AEA4;
 }
 
@@ -153,8 +165,11 @@ h1, h4{
 }
 
 .fc-today {
-  background-color: #7F876F;
+  background-color: #AAA4AE;
   clip-path: circle(35% at 100% 0);
+}
+.fc-today a {
+  color: #fff;
 }
 
 .fc-sat, .fc-sun {
@@ -189,6 +204,74 @@ h1, h4{
   transform: translateY(0) !important;
 }
 
+/* COLOR SELECTION */
+.btn-green {
+  background-color: #A8AEA4 !important;
+}
+.btn-green:hover {
+  filter: brightness(90%);
+}
+.green-inp:checked ~ .btn-green {
+  filter: brightness(80%);
+  border-color: #2e2e2e;
+}
+
+.btn-blue {
+  background-color: #98B7BC !important;
+}
+.btn-blue:hover {
+  filter: brightness(90%);
+}
+.blue-inp:checked ~ .btn-blue {
+  filter: brightness(80%);
+  border-color: #2e2e2e;
+}
+
+.btn-red {
+  background-color: #ed5252 !important;
+}
+.btn-red:hover {
+  filter: brightness(90%);
+}
+.red-inp:checked ~ .btn-red {
+  filter: brightness(80%);
+  border-color: #2e2e2e;
+}
+
+.btn-yellow {
+  background-color: #ddd568 !important;
+}
+.btn-yellow:hover {
+  filter: brightness(90%);
+}
+.yellow-inp:checked ~ .btn-yellow {
+  filter: brightness(80%);
+  border-color: #2e2e2e;
+}
+
+.btn-pur {
+  background-color: #e77cd4 !important;
+}
+.btn-pur:hover {
+  filter: brightness(90%);
+}
+.pur-inp:checked ~ .btn-pur {
+  filter: brightness(80%);
+  border-color: #2e2e2e;
+}
+
+.btn-lite {
+  background-color: #C2C2C0 !important;
+}
+.btn-lite:hover {
+  filter: brightness(90%);
+}
+.lite-inp:checked ~ .btn-lite {
+  filter: brightness(80%);
+  border-color: #2e2e2e;
+}
+
+
 /* DETAILS */
 .detail-content {
   position: relative;
@@ -217,4 +300,8 @@ h1, h4{
 }
 .detail-content .detail-btn a{
   width: 27vw;
+}
+
+.description {
+  margin-right: 4px;
 }

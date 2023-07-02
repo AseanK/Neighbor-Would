@@ -1,5 +1,4 @@
 {% include "header.html" %}
-<html>
 <head>
   <title>Events Calendar</title>
 
@@ -21,7 +20,6 @@
       var calendar = $('#calendar').fullCalendar({
         themeSystem: 'bootstrap3',
         contentHeight: 900,
-        eventColor: '#A8AEA4',
         header: {
           left: 'month,listMonth',
           center: 'title',
@@ -46,7 +44,8 @@
               title: '{{ event.title | escape }}',
               start: '{{ event.date }}T{{ event.s_time }}',
               end: '{{ event.e_date }}T{{ event.e_time }}',
-              id: '{{ event.id }}'
+              id: '{{ event.id }}',
+              color: '{{ event.color }}'
             },
           {% endfor %}
         ],
@@ -66,13 +65,15 @@
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
-  <div class="row justify-content-center">
-    <h4 class="col-md-10 gx-5 mt-2">Events Calendar</h4>
-    <hr class="my-2" />
-    <div class="row justify-content-center">
-      <div class="cal-container col-md-10 gx-5 mb-5 mt-3">
-        <div id='calendar'></div>
-      </div>
+  <div class="row cal-row">
+    <div class="col-md-10 gx-5 mt-2">
+      <h4>Events Calendar</h4>
+    </div>
+  </div>
+  <!-- <hr class="my-2" /> -->
+  <div class="row cal-row">
+    <div class="cal-container col-md-10 gx-5 mb-5 mt-3">
+      <div id='calendar'></div>
     </div>
   </div>
 </body>

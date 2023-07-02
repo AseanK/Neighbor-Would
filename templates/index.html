@@ -48,7 +48,7 @@
     <hr class="my-5" />
 
     <!--Section: Content-->
-    {% if events %}
+    {% if events[2] %}
     <section class="text-left" id="events">
       <h4 class="mb-5"><strong>Upcoming Events</strong></h4>
       <div id="carouselDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
@@ -63,8 +63,10 @@
               <img src="../static/image/plant.jpg" class="d-block w-100">
             </div>
             <div class="carousel-caption d-none d-md-block">
-              <h5>{{ events[0].title }}</h5>
-              <p>{{ events[0].date }}<br>{{ events[0].s_time }}</p>
+              <a href="{{ url_for('event_details', event_id=events[0].id) }}" class="detail-link">
+                <h5>{{ events[0].title }}</h5>
+              </a>
+              <p>{{ df(events[0].date) }}<br>{{ tf(events[0].s_time) }}</p>
             </div>
           </div>
           <div class="carousel-item">
@@ -72,8 +74,10 @@
               <img src="../static/image/plant.jpg" class="d-block w-100">
             </div>
             <div class="carousel-caption d-none d-md-block">
-              <h5>{{ events[1].title }}</h5>
-              <p>{{ events[1].date }}<br>{{ events[1].s_time }}</p>
+              <a href="{{ url_for('event_details', event_id=events[1].id) }}" class="detail-link">
+                <h5>{{ events[1].title }}</h5>
+              </a>
+              <p>{{ df(events[1].date) }}<br>{{ tf(events[1].s_time) }}</p>
             </div>
           </div>
           <div class="carousel-item">
@@ -81,8 +85,10 @@
               <img src="../static/image/plant.jpg" class="d-block w-100">
             </div>
             <div class="carousel-caption d-none d-md-block">
-              <h5>{{ events[2].title }}</h5>
-              <p>{{ events[2].date }}<br>{{ events[2].s_time }}</p>
+              <a href="{{ url_for('event_details', event_id=events[2].id) }}" class="detail-link">
+                <h5>{{ events[2].title }}</h5>
+              </a>
+              <p>{{ df(events[2].date) }}<br>{{ tf(events[2].s_time) }}</p>
             </div>
           </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselDark" data-bs-slide="prev">
@@ -103,14 +109,14 @@
     <!--Footer-->
     <footer class="bg-light text-lg-end">
       <hr class="m-5" />
-    
+
       <p><strong>Follow us on social media</strong></p>
       <div class="icons">
         <a href="#" class="fa fa-facebook-f">Facebook</a>
         <a href="#" class="fa fa-twitter">Twitter</a>
         <a href="#" class="fa fa-youtube">Youtube</a>
         <a href="https://github.com/AseanK" class="fa fa-github">Github</a>
-        
+
     </div>
     </footer>
   </div>
