@@ -1,6 +1,6 @@
 #intro {
   background: linear-gradient(rgba(10,10,10,0.5), rgba(10,10,10,0.5)), url("../static/image/leaf.jpg");
-  height: 101vh;
+  height: 100vh;
   background-size: cover;
   background-position: center;
 }
@@ -8,10 +8,21 @@
 /* Height for devices larger than 576px */
 @media (min-width: 992px) {
   #intro {
-    margin-top: -58.59px;
+    margin-top: -55px;
   }
 }
 
+@media (max-width: 767px) {
+  .main-list li{
+    margin-top: -10px;
+  }
+}
+
+@media only screen and (min-width: 280px) and (max-width: 599px) {
+  .main-list li{
+    margin-top: -10px;
+  }
+}
 *{
   transition: 0.3s ease-in-out;
 }
@@ -46,6 +57,10 @@ h1, h4{
 .container .text-white {
   position: relative;
   z-index: 1;
+}
+
+.main-list li{
+  margin-top: 10px;
 }
 
 /* Events */

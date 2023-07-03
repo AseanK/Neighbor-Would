@@ -36,21 +36,22 @@ def date_format(date):
     # First three words of the month and the date
     return d.strftime("%b %d")
 
-
 # Time format e.g. 4:00PM
 def time_format(time):
     t = datetime.strptime(time, '%H:%M')
     return t.strftime('%I:%M %p')
+
+# Date fomat to compare
+def d_format(date):
+    return datetime.strptime(date, '%Y-%m-%d').date()
 
 
 # Main home
 @app.route('/')
 def index():
     today = date.today()
-    events = Events.query.order_by(desc(Events.date)).all()
-    tf = time_format
-    df = date_format
-    return render_template('index.html', events=events, today=today, tf=tf, df=df)
+    events = Events.query.order_by(Events.date).all()
+    return render_template('index.html', events=events, today=today, tf=time_format, df=date_format, d_f=d_format)
 
 @app.route('/calendar')
 def calendar():

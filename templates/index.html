@@ -7,8 +7,8 @@
           <h1 class="mb-3">NeighborWould</h1>
           <h5 class="mb-4">Connection to your neighbors</h5>
           <a class="btn btn-outline-light btn-lg m-2" href="{{ url_for('calendar') }}" role="button"
-            rel="nofollow">Event Calendar</a>
-          <a class="btn btn-outline-light btn-lg m-2" href="#events" role="button">Upcoming Events</a>
+            rel="nofollow">Get started</a>
+          <a class="btn btn-outline-light btn-lg m-2" href="#about" role="button">Learn more</a>
         </div>
       </div>
   </div>
@@ -22,13 +22,13 @@
     <section>
       <div class="row">
         <div class="col-md-6 gx-5 mb-5 mt-5">
-          <h4><strong>Connect with Your Neighbors and Stay Updated</strong></h4>
+          <h4 class="mb-3 mt-3"><strong>Connect with Your Neighbors and Stay Updated</strong></h4>
           <p>
             Welcome to NeighborWould, the community platform where you can easily connect with your neighbors and stay informed about local events. 
             Whether you're organizing a garage sale, throwing a party, or hosting a community gathering, 
-            NeighborWould provides a convenient way to share and discover events in your neighborhood.
+            NeighborWould provides a convenient way to share and discover events in your neighborhood.<br><br>
             With NeighborWould, you can explore a wide range of events happening in your area.
-            Stay informed about upcoming events and plan your schedule accordingly.<br> 
+            Stay informed about upcoming events and plan your schedule accordingly.<br><br>
             Never miss out on the exciting happenings in your community again!
           </p>
         </div>
@@ -47,14 +47,29 @@
     <!-- Section: Example -->
     <section class="text-left" id="example">
       <div class="row">
-        <div class="col">
-          <h4><strong>How does it work?</strong></h4>
-          <ul>
-            <li>Light weight</li>
-            <li>noice</li>
-            <li>more noice </li>
+        <div class="col col-lg-4 col-md-12">
+          <h4 class="mb-3 mt-3"><strong>How does it work?</strong></h4>
+          <ul class="main-list mt-3 fa-ul">
+            <li><span class="fa-li"><i class="fa fa-leaf"></i></span>Browse local events effortlessly</li>
+            <li><span class="fa-li"><i class="fa fa-leaf"></i></span>Supports both Month calendar view and List calendar view</li>
+            <ul>
+              <li>Month view: Displays a traditional calendar view</li>
+              <li>List view: Presents events as a well-organized list</li>
+              <li>Both views provides starting time and event titles</li>
+            </ul>
+            <li><span class="fa-li"><i class="fa fa-leaf"></i></span>Click on an event to view detailed information</li>
+            <ul>
+              <li>Shows starting and ending date and time</li>
+              <li>Includes a description with event location</li>
+            </ul>
+            <li><span class="fa-li"><i class="fa fa-leaf"></i></span>Create local events effortlessly</li>
+            <ul>
+              <li>Select the date to start the event</li>
+              <li>Supports multi-day events</li>
+              <li>Customize the event display color</li>
+            </ul>
           </ul>
-          <div class="text-end">
+          <div class="text-end mt-5">
             <p><strong>Ready to explore?</strong></p>
             <a class="btn btn-outline-dark btn-sm" href="{{ url_for('calendar') }}" role="button"
               rel="nofollow">Event Calendar</a>
@@ -69,49 +84,42 @@
     </section>
 
     <!--Section: Content-->
-    {% if events[2] %}
+    <hr class="my-5" />
     <section class="text-left" id="events">
       <h4 class="mb-5"><strong>Upcoming Events</strong></h4>
-      <div id="carouselDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner carousel-fade">
+      <div class="row">
+      <div id="carouselDark" class="carousel carousel-dark slide col-md-5 order-md-1" data-bs-ride="carousel">
+        <div class="carousel-inner carousel">
           <div class="carousel-item active">
             <div class="crop-img">
-              <img src="../static/image/plant.jpg" class="d-block w-100">
+              <img src="../static/image/mug.jpg" class="d-block w-100">
             </div>
             <div class="carousel-caption d-none d-md-block">
-              <a href="{{ url_for('event_details', event_id=events[0].id) }}" class="detail-link">
-                <h5>{{ events[0].title }}</h5>
+              <a>
+                <h5>Event Title</h5>
               </a>
-              <p>{{ df(events[0].date) }}<br>{{ tf(events[0].s_time) }}</p>
+              <p>Days left</p>
+              <p class="text-end">Starting date<br>Starting time</p>
             </div>
           </div>
+          {% for event in events %}
+          {% if d_f(event.date) < today %}
+            {# Skip past events #}
+          {% else %}
           <div class="carousel-item">
             <div class="crop-img">
-              <img src="../static/image/plant.jpg" class="d-block w-100">
+              <img src="../static/image/mug.jpg" class="d-block w-100">
             </div>
             <div class="carousel-caption d-none d-md-block">
-              <a href="{{ url_for('event_details', event_id=events[1].id) }}" class="detail-link">
-                <h5>{{ events[1].title }}</h5>
+              <a href="{{ url_for('event_details', event_id=event.id) }}" class="detail-link">
+                <h5>{{ event.title }}</h5>
               </a>
-              <p>{{ df(events[1].date) }}<br>{{ tf(events[1].s_time) }}</p>
+              <p>{{ (d_f(event.date) - today).days }} days</p>
+              <p class="text-end">{{ df(event.date) }}<br>{{ tf(event.s_time) }}</p>
             </div>
           </div>
-          <div class="carousel-item">
-            <div class="crop-img">
-              <img src="../static/image/plant.jpg" class="d-block w-100">
-            </div>
-            <div class="carousel-caption d-none d-md-block">
-              <a href="{{ url_for('event_details', event_id=events[2].id) }}" class="detail-link">
-                <h5>{{ events[2].title }}</h5>
-              </a>
-              <p>{{ df(events[2].date) }}<br>{{ tf(events[2].s_time) }}</p>
-            </div>
-          </div>
+          {% endif %}
+          {% endfor %}
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselDark" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
@@ -122,9 +130,21 @@
           </button>
         </div>
       </div>
-      
+        <div class="col-md-7 order-md-2">
+          <div class="event-header">
+            <p><strong>Discover a Variety of Events</strong></p>
+            <p class="section-subheading">Explore a Wide Range of Events in Your Area</p>
+          </div>
+          
+          <div class="event-description">
+            <p><strong>What Kinds of Events?</strong></p>
+            <p>Experience a diverse range of events, from intimate gatherings to large-scale spectacles. Our platform caters to all types of events, ensuring there's something for everyone.</p>
+            <p>With NeighborWould, you can stay informed about upcoming events and plan your schedule accordingly. Whether it's a local workshop, a music concert, or a community festival, you'll never miss out on the exciting happenings in your community again.</p>
+          </div>
+          
+        </div>
+      </div>
     </section>
-    {% endif %}
 
     <!--Footer-->
     <footer class="bg-light text-lg-end">
