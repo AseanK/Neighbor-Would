@@ -20,7 +20,7 @@
   <div class="container">
     <!--Section: Content-->
     <section>
-      <div class="row">
+      <div class="row reveal">
         <div class="col-md-6 gx-5 mb-5 mt-5">
           <h4 class="mb-3 mt-3"><strong>Connect with Your Neighbors and Stay Updated</strong></h4>
           <p>
@@ -45,7 +45,7 @@
     <hr class="my-5" />
 
     <!-- Section: Example -->
-    <section class="text-left" id="example">
+    <section class="text-left reveal" id="example">
       <div class="row">
         <div class="col col-lg-4 col-md-12">
           <h4 class="mb-3 mt-3"><strong>How does it work?</strong></h4>
@@ -85,7 +85,7 @@
 
     <!--Section: Content-->
     <hr class="my-5" />
-    <section class="text-left" id="events">
+    <section class="text-left reveal" id="events">
       <h4 class="mb-5"><strong>Upcoming Events</strong></h4>
       <div class="row">
       <div id="carouselDark" class="carousel carousel-dark slide col-md-5 order-md-1" data-bs-ride="carousel">
@@ -161,7 +161,32 @@
     </footer>
   </div>
 </main>
+  <a href="#" id="scroll-to-top" class="dmtop"><i class="fa fa-angle-up"></i></a>
 <!--Main layout-->
+
+  <script>
+    document.addEventListener("scroll", function(){ 
+      var reveals = document.querySelectorAll(".reveal");
+      var scrollToTop = document.getElementById('scroll-to-top');
+      var scrollPosition = window.pageYOffset;
+
+      for (var i = 0; i < reveals.length; i++) {
+        var windowHeight = window.innerHeight;
+        var elementTop = reveals[i].getBoundingClientRect().top;
+        var elementVisible = 150;
+      
+        if (scrollPosition > 0) {
+          scrollToTop.classList.add('show');
+        } else {
+          scrollToTop.classList.remove('show');
+        }
+
+        if (elementTop < windowHeight - elementVisible) {
+          reveals[i].classList.add("active");
+        }
+      }
+    })
+  </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
