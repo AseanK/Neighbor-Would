@@ -3,10 +3,13 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_bootstrap import Bootstrap
 from datetime import date, datetime
 from sqlalchemy import desc
+import os
+
+KEY_VAL = os.getenv("key")
 
 app = Flask(__name__)
 app.app_context().push()
-app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
+app.config['SECRET_KEY'] = KEY_VAL
 Bootstrap(app)
 
 # Connect to DB
