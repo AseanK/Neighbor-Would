@@ -5,12 +5,15 @@
       <div class="form-container text-white mt-5">
         <h1>Event Post</h1>
           <form action="{{ url_for('submit_event', event_date=request.args.get('date')) }}" method="POST" class="event-form">
-            <div class="form-group m-4">
+
+            
+            <div class="col">
+            <div class="form-group">
               <label for="title">Event Name</label>
               <input type="text" class="form-control" name="title" required>
             </div>
 
-            <div class="form-group m-4">
+            <div class="form-group">
               <div class="row">
                 <div class="col">
                   <label class="form-check-label" for="enable-date-input">Multi-day Event</label>
@@ -23,7 +26,7 @@
               </div>
             </div>
 
-            <div class="form-group m-4">
+            <div class="form-group">
               <div class="row">
                 <div class="col">
                   <label for="time">Starting Time</label>
@@ -36,12 +39,21 @@
               </div>
             </div>
 
-            <div class="form-group m-4">
+            <div class="form-group">
+              <label for="address">Address</label>
+              <div class="map" id="map" style="height: 250px; width: 100%;"></div>
+              
+              <input type="hidden" id ="address" class="form-control" name="address" required>
+              <input type="hidden" id="longitude" name="longitude">
+              <input type="hidden" id="latitude" name="latitude">
+            </div>
+
+            <div class="form-group">
               <label for="description">Description</label>
               <textarea class="form-control text-form" name="description" required placeholder="Enter event details and location/address"></textarea>
             </div>
 
-            <div class="form-group m-4">
+            <div class="form-group">
               <div class="row">
                 <label>Background Color</label>
                 <div class="col">
@@ -71,10 +83,11 @@
               </div>
             </div>
 
-            <div class="form-group m-4 text-end">
+            <div class="form-group text-end">
               <a class="btn btn-outline-light btn-lg" href="{{ url_for('calendar') }}">Discard</a>
               <button type="submit" class="btn btn-outline-light btn-lg">Submit Event</button>
             </div>
+          </div>
           </form>
       </div>
     </div>
@@ -98,6 +111,41 @@
         }, 300);
       }
     });
+  });
+</script>
+
+<script>
+  mapboxgl.accessToken = 'pk.eyJ1IjoiZ3JlYW4iLCJhIjoiY2wyemR1eXl5MDBvMTNibGRhbzhmYXJmMCJ9.W_I95jIIYo8NYmJD7hWalQ';
+  var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v12',
+    center: [-74.5, 40],
+    zoom: 9
+  });
+
+  var geocoder = new MapboxGeocoder({
+    accessToken: mapboxgl.accessToken,
+    mapboxgl: mapboxgl
+  });
+
+  // Add the geocoder control to the map
+  map.addControl(geocoder);
+
+  // After the user selects a location, add a marker to the map
+  geocoder.on('result', function(e) {
+    var marker = new mapboxgl.Marker()
+      .setLngLat(e.result.center)
+      .addTo(map);
+
+    // Get the coordinates of the marker
+    var lng = marker.getLngLat().lng;
+    var lat = marker.getLngLat().lat;
+    var address = e.result.place_name;
+
+    // Set the coordinates in the form fields
+    document.getElementById('longitude').value = lng;
+    document.getElementById('latitude').value = lat;
+    document.getElementById('address').value = address;
   });
 </script>
 

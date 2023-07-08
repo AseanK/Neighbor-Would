@@ -134,6 +134,7 @@ h1, h4{
 
 .detail-link {
   text-decoration: none;
+  text-align: end;
   color: #2e2e2e;
 }
 
@@ -233,6 +234,7 @@ h1, h4{
 /* FORM */
 .event-form {
   width: 40vw;
+  height: 80vh;
 }
 
 .form-group {
@@ -256,6 +258,11 @@ h1, h4{
 .show {
   opacity: 1 !important;
   transform: translateY(0) !important;
+}
+
+.map{
+  margin-top: 10px;
+  border-radius: 20px;
 }
 
 /* COLOR SELECTION */
@@ -358,4 +365,17 @@ h1, h4{
 
 .description {
   margin-right: 4px;
+}
+
+#marker {
+  background-image: url('image/pin.png');
+  background-size: cover;
+  width: 25px;
+  height: 30px;
+  cursor: pointer;
+  }
+
+.mapboxgl-popup {
+  max-width: 200px;
+  color: #2e2e2e;
 }

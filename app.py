@@ -28,6 +28,9 @@ class Events(db.Model):
     e_date = db.Column(db.String, nullable=True)
     description = db.Column(db.Text, nullable=False)
     color = db.Column(db.String, nullable=True)
+    address = db.Column(db.String, nullable=False)
+    lng = db.Column(db.Float, nullable=False)
+    lat = db.Column(db.Float, nullable=False)
 
 db.create_all()
 
@@ -71,7 +74,10 @@ def submit_event(event_date):
         description = request.form['description'],
         date = event_date,
         e_date = request.form['ending_date'],
-        color = request.form ['color']
+        color = request.form ['color'],
+        address = request.form['address'],
+        lng = request.form['longitude'],
+        lat = request.form['latitude']
         )
     db.session.add(new_event)
     db.session.commit()
@@ -100,3 +106,6 @@ def event_details(event_id):
         formatted_e_date = None
 
     return render_template('event_details.html', event=event, s_time=s_t_am_pm, e_time=e_t_am_pm, date=formatted_date, e_date =formatted_e_date)
+
+if __name__ == '__main__':
+    app.run(debug=True)

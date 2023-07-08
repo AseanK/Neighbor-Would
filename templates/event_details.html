@@ -9,6 +9,7 @@
         <div class="description">
           <p>{{ event.description }}</p>
         </div>
+        <div class="map" id="map" style="height: 250px; width: 100%;"></div>
         <div class="details">
           {% if event.e_date %}
           <p class="text-end">{{ date }} - {{ e_date }} </br> {{ s_time }} - {{ e_time }}</p>
@@ -23,8 +24,28 @@
     </div>
   </div>
 </div>
+  <script>
+  	mapboxgl.accessToken = 'pk.eyJ1IjoiZ3JlYW4iLCJhIjoiY2wyemR1eXl5MDBvMTNibGRhbzhmYXJmMCJ9.W_I95jIIYo8NYmJD7hWalQ';
+    const map = new mapboxgl.Map({
+      container: 'map',
+      // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+      style: 'mapbox://styles/mapbox/streets-v12',
+      center: [{{ event.lng }}, {{ event.lat }}],
+      zoom: 8
+    });
 
-    <!-- {{ event.date }}
-    {{ event.time }} -->
+    // create the popup
+const popup = new mapboxgl.Popup({ offset: 25 }).setText('{{ event.address }}');
+ 
+// create DOM element for the marker
+const el = document.createElement('div');
+el.id = 'marker';
+ 
+// create the marker
+new mapboxgl.Marker(el)
+.setLngLat([{{ event.lng }}, {{ event.lat }}])
+.setPopup(popup) // sets a popup on this marker
+.addTo(map);
+  </script>
 </body>
 </html>

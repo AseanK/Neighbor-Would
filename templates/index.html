@@ -111,9 +111,8 @@
               <img src="../static/image/mug.jpg" class="d-block w-100">
             </div>
             <div class="carousel-caption d-none d-md-block">
-              <a href="{{ url_for('event_details', event_id=event.id) }}" class="detail-link">
-                <h5>{{ event.title }}</h5>
-              </a>
+              <h5>{{ event.title }}</h5>
+              <a href="{{ url_for('event_details', event_id=event.id) }}" class="detail-link">Click for details</a>
               <p>{{ (d_f(event.date) - today).days }} days</p>
               <p class="text-end">{{ df(event.date) }}<br>{{ tf(event.s_time) }}</p>
             </div>
