@@ -251,6 +251,11 @@ h1, h4{
   opacity: 0.7;
 }
 
+.form-control::placeholder {
+  color: #999;
+  opacity: 0.7;
+}
+
 .form-check-input:hover, .form-check-label:hover{
   cursor: pointer;
 }
@@ -261,8 +266,8 @@ h1, h4{
 }
 
 .map{
-  margin-top: 10px;
   border-radius: 20px;
+  transition: 1s ease-in-out !important;
 }
 
 /* COLOR SELECTION */
@@ -365,6 +370,12 @@ h1, h4{
 
 .description {
   margin-right: 4px;
+}
+
+.load {
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+  transition: 1s ease-in-out !important;
 }
 
 #marker {

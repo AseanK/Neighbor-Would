@@ -107,5 +107,11 @@ def event_details(event_id):
 
     return render_template('event_details.html', event=event, s_time=s_t_am_pm, e_time=e_t_am_pm, date=formatted_date, e_date =formatted_e_date)
 
+@app.route('/map')
+def event_map():
+    today = date.today()
+    events = Events.query.all()
+    return render_template('map.html', events=events, today=today, d_f=d_format)
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='192.168.4.23')

@@ -1,0 +1,36 @@
+{% include "header.html" %}
+
+
+<div class="map" id="map" style="position: absolute; top: 0; bottom: 0; width: 100%;"></div>
+
+
+<script>
+      	mapboxgl.accessToken = 'pk.eyJ1IjoiZ3JlYW4iLCJhIjoiY2wyemR1eXl5MDBvMTNibGRhbzhmYXJmMCJ9.W_I95jIIYo8NYmJD7hWalQ';
+    const map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v12',
+      center: [-122.4, 37.8],
+      zoom: 11
+    });
+
+    {% for event in events%}
+    {% if d_f(event.date) < today %}
+            {# Skip past events #}
+          {% else %}
+    var popup = new mapboxgl.Popup({ offset: 25 }).setText('{{ event.title }} ON {{ event.date }}');
+      
+      // create DOM element for the marker
+      var el = document.createElement('div');
+      el.id = 'marker';
+        
+      // create the marker
+      new mapboxgl.Marker(el)
+      .setLngLat([{{ event.lng }}, {{ event.lat }}])
+      .setPopup(popup) // sets a popup on this marker
+      .addTo(map);
+    {% endif %}
+    {% endfor %}
+    </script>
+
+</body>
+</html>
