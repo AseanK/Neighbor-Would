@@ -6,6 +6,7 @@ from sqlalchemy import desc
 import os
 
 KEY_VAL = os.getenv("key")
+MAP_KEY = os.getenv("MAP_KEY")
 
 app = Flask(__name__)
 app.app_context().push()
@@ -86,7 +87,7 @@ def submit_event(event_date):
 
 @app.route('/create')
 def create():
-    return render_template('create.html')
+    return render_template('create.html', MAP_KEY=MAP_KEY)
 
 @app.route('/event-details/<int:event_id>')
 def event_details(event_id):
@@ -105,13 +106,13 @@ def event_details(event_id):
     else:
         formatted_e_date = None
 
-    return render_template('event_details.html', event=event, s_time=s_t_am_pm, e_time=e_t_am_pm, date=formatted_date, e_date =formatted_e_date)
+    return render_template('event_details.html', event=event, s_time=s_t_am_pm, e_time=e_t_am_pm, date=formatted_date, e_date =formatted_e_date, MAP_KEY=MAP_KEY)
 
 @app.route('/map')
 def event_map():
     today = date.today()
     events = Events.query.all()
-    return render_template('map.html', events=events, today=today, d_f=d_format)
+    return render_template('map.html', events=events, today=today, d_f=d_format, MAP_KEY=MAP_KEY)
 
 if __name__ == '__main__':
     app.run(debug=True, host='192.168.4.23')
