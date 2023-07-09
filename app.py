@@ -115,4 +115,4 @@ def event_map():
     return render_template('map.html', events=events, today=today, d_f=d_format, MAP_KEY=MAP_KEY)
 
 if __name__ == '__main__':
-    app.run(debug=True, host='192.168.4.23')
+    app.run(debug=True, host='0.0.0.0')

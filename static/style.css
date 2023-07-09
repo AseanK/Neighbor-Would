@@ -5,19 +5,8 @@
   background-position: center;
 }
 
-@media (max-width: 767px) {
-  .main-list li{
-    margin-top: -10px;
-  }
-}
-
-@media only screen and (min-width: 280px) and (max-width: 599px) {
-  .main-list li{
-    margin-top: -10px;
-  }
-}
 *{
-  transition: 0.3s ease-in-out;
+  transition: 0.4s ease-in-out;
 }
 
 html{
@@ -234,7 +223,6 @@ h1, h4{
 /* FORM */
 .event-form {
   width: 40vw;
-  height: 80vh;
 }
 
 .form-group {
@@ -263,11 +251,6 @@ h1, h4{
 .show {
   opacity: 1 !important;
   transform: translateY(0) !important;
-}
-
-.map{
-  border-radius: 20px;
-  transition: 1s ease-in-out !important;
 }
 
 /* COLOR SELECTION */
@@ -342,8 +325,8 @@ h1, h4{
 .detail-content {
   position: relative;
   background-color: rgba(127, 135, 111, 0.9);
-  width: 30vw;
-  height: 50vh;
+  width: 40vw;
+  height: 70vh;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -358,22 +341,30 @@ h1, h4{
 
 .detail-content .details {
   align-self: flex-end;
-  margin-bottom: 20px;
   margin-right: 20px;
 }
-.detail-content .detail-btn{
-  justify-content: center;
-}
-.detail-content .detail-btn a{
-  width: 27vw;
+
+.back-btn a{
+  margin-right: 1em;
+  margin-bottom: 1em;
+  width: 40%;
 }
 
 .description {
   margin-right: 4px;
 }
 
+.detail-map {
+  height:70vh;
+  width: 40vw;
+  opacity: 0;
+  z-index: 0;
+  margin-top: 2em;
+}
+
 .load {
   opacity: 1 !important;
+  z-index: 3 !important;
   transform: translateX(0) !important;
   transition: 1s ease-in-out !important;
 }
@@ -389,4 +380,9 @@ h1, h4{
 .mapboxgl-popup {
   max-width: 200px;
   color: #2e2e2e;
+}
+
+.map{
+  border-radius: 20px;
+  transition: 0.4s ease-in-out !important;
 }

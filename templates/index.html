@@ -88,13 +88,13 @@
     <section class="text-left reveal" id="events">
       <h4 class="mb-5"><strong>Upcoming Events</strong></h4>
       <div class="row">
-      <div id="carouselDark" class="carousel carousel-dark slide col-md-5 order-md-1" data-bs-ride="carousel">
+      <div id="carouselDark" class="carousel carousel-dark slide col-md-5" data-bs-ride="carousel">
         <div class="carousel-inner carousel">
           <div class="carousel-item active">
             <div class="crop-img">
               <img src="../static/image/mug.jpg" class="d-block w-100">
             </div>
-            <div class="carousel-caption d-none d-md-block">
+            <div class="carousel-caption">
               <a>
                 <h5>Event Title</h5>
               </a>
@@ -110,7 +110,7 @@
             <div class="crop-img">
               <img src="../static/image/mug.jpg" class="d-block w-100">
             </div>
-            <div class="carousel-caption d-none d-md-block">
+            <div class="carousel-caption">
               <h5>{{ event.title }}</h5>
               <a href="{{ url_for('event_details', event_id=event.id) }}" class="detail-link">Click for details</a>
               <p>in {{ (d_f(event.date) - today).days }} days</p>
