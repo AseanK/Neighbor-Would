@@ -7,6 +7,7 @@ import os
 
 KEY_VAL = os.getenv("key")
 MAP_KEY = os.getenv("MAP_KEY")
+DATABASE_URL = os.getenv("DB_URL")
 
 app = Flask(__name__)
 app.app_context().push()
@@ -14,7 +15,7 @@ app.config['SECRET_KEY'] = KEY_VAL
 Bootstrap(app)
 
 # Connect to DB
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///events.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -113,6 +114,3 @@ def event_map():
     today = date.today()
     events = Events.query.all()
     return render_template('map.html', events=events, today=today, d_f=d_format, MAP_KEY=MAP_KEY)
-
-if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
