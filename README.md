@@ -1,3 +1,5 @@
+<img width="100%" src="/static/image/neighborwould.gif">
+
 <img align="right" width="33%" height="33%" src="/static/image/logo.png">
 
 # Neighbor-Would
